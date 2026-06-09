@@ -85,3 +85,19 @@ FOMO klar lesbar, aber mit einem bedeutungstragenden Bild verschmolzen /
 
 - `FOMO_Marketing_Logo_Konzepte_WortBild.pdf` — Praesentation (8 Seiten)
 - Generator: `python3 logo/generate_combo.py`
+
+## Set: FEAR OF MISSING OUT (Wort + Bild, gedeckte Farben)
+Optimierte Runde: die Bildidee erzaehlt die FOMO-Bedeutung direkt; sanfte,
+gedeckte, edle Farben (nichts Buntes). Wired & Buzz wurden verworfen.
+
+| # | Name | Bildidee (FOMO-Bedeutung) |
+|---|------|---------------------------|
+| F1 | MISSING PIECE | O mit Luecke + Punkt aussen = du fehlst |
+| F2 | LEFT OUT | Gruppe im O, ein leerer Ring aussen = ausgeschlossen |
+| F3 | RUNNING OUT | Sanduhr im O = die Zeit laeuft ab |
+| F4 | FADING | Partikel steigen vom O auf = der Moment verfliegt |
+| F5 | THE PULL | Pfeile ziehen zum O = der Sog, dabei zu sein |
+| F6 | ALERT | gedeckter Signalpunkt am O = es passiert gerade etwas |
+
+- `FOMO_Marketing_Logo_Konzepte_FOMO.pdf` — Praesentation (8 Seiten)
+- Generator: `python3 logo/generate_fomo2.py`
