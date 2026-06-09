@@ -69,3 +69,19 @@ erkennbar, ohne sie lesen zu muessen. Darunter jeweils die FOMO-Wortmarke.
 
 - `FOMO_Marketing_Logo_Konzepte_Bildmarken.pdf` — Praesentation (8 Seiten)
 - Generator: `python3 logo/generate_marks.py`
+
+## Set: KOMBINATIONSMARKEN (Wort + Bild)
+FOMO klar lesbar, aber mit einem bedeutungstragenden Bild verschmolzen /
+"verdrahtet".
+
+| # | Name | Bildidee |
+|---|------|----------|
+| K1 | NOTIFICATION | roter Notification-Punkt am letzten O |
+| K2 | SIGNAL | Broadcast-Wellen aus dem ersten O |
+| K3 | PLAY | Play-Dreieck im ersten O |
+| K4 | BUZZ | Wort in einer Sprechblase |
+| K5 | WIRED | Knoten + Leitung verbinden die Buchstaben |
+| K6 | COUNTDOWN | Uhr/Countdown im letzten O |
+
+- `FOMO_Marketing_Logo_Konzepte_WortBild.pdf` — Praesentation (8 Seiten)
+- Generator: `python3 logo/generate_combo.py`
