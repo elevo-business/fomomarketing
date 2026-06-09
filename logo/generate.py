@@ -18,7 +18,7 @@ FONT = "Liberation Sans, Arial, DejaVu Sans, sans-serif"
 # ----------------------------------------------------------------------------
 # Buchstaben-Bausteine (monolineare, geometrische Eigenkonstruktion)
 # ----------------------------------------------------------------------------
-F_W, O_W, M_W, GAP = 0.56, 1.0, 0.92, 0.18   # Breiten / Abstand relativ zu Versalhoehe
+F_W, O_W, M_W, GAP = 0.56, 1.0, 0.56, 0.18   # Breiten / Abstand relativ zu Versalhoehe (M = F)
 
 
 def _attrs(ink, w, cap):
