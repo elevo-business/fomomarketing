@@ -72,11 +72,14 @@ def letter_O(x, y, H, w, ink, accent, cap, treat):
 
 
 def letter_M(x, y, H, w, ink, cap):
-    xa, xb, mid = x + w / 2, x + M_W * H - w / 2, x + M_W * H / 2
-    s = (f'<path {_attrs(ink,w,cap)} d="'
-         f'M {xa:.2f} {y+H:.2f} L {xa:.2f} {y:.2f} '
-         f'L {mid:.2f} {y+H*0.55:.2f} L {xb:.2f} {y:.2f} L {xb:.2f} {y+H:.2f}"/>')
-    return s, M_W * H
+    # Flache Oberkante exakt auf Versalhoehe (keine ueberstehenden Miter-Spitzen)
+    # -> M ist exakt so hoch und breit wie F.
+    Wm, t, mid, vy = M_W * H, w, x + M_W * H / 2, y + 0.6 * H
+    legL = f'<rect x="{x:.2f}" y="{y:.2f}" width="{t:.2f}" height="{H:.2f}" fill="{ink}"/>'
+    legR = f'<rect x="{x+Wm-t:.2f}" y="{y:.2f}" width="{t:.2f}" height="{H:.2f}" fill="{ink}"/>'
+    v = (f'<path fill="{ink}" d="M {x:.2f} {y:.2f} L {x+t:.2f} {y:.2f} L {mid:.2f} {vy:.2f} '
+         f'L {x+Wm-t:.2f} {y:.2f} L {x+Wm:.2f} {y:.2f} L {mid:.2f} {vy+t*1.15:.2f} Z"/>')
+    return legL + legR + v, Wm
 
 
 def word_width(s, H):
