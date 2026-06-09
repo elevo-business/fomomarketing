@@ -75,7 +75,7 @@ def letter_M(x, y, H, w, ink, cap):
     xa, xb, mid = x + w / 2, x + M_W * H - w / 2, x + M_W * H / 2
     s = (f'<path {_attrs(ink,w,cap)} d="'
          f'M {xa:.2f} {y+H:.2f} L {xa:.2f} {y:.2f} '
-         f'L {mid:.2f} {y+H*0.6:.2f} L {xb:.2f} {y:.2f} L {xb:.2f} {y+H:.2f}"/>')
+         f'L {mid:.2f} {y+H*0.82:.2f} L {xb:.2f} {y:.2f} L {xb:.2f} {y+H:.2f}"/>')
     return s, M_W * H
 
 

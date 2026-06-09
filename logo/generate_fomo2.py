@@ -12,6 +12,7 @@ from generate import (draw_word, tagline, card, swatches, wrap, esc,
                       FONT, W, H_PAGE, F_W, O_W, M_W, GAP)
 
 TOTAL = (F_W + GAP + O_W + GAP + M_W + GAP + O_W)
+WEIGHT = 0.135                 # kraeftigere, seriösere Strichstaerke (statt 0.10)
 
 
 def _pol(cx, cy, r, deg):
@@ -19,7 +20,7 @@ def _pol(cx, cy, r, deg):
     return cx + r * math.cos(a), cy + r * math.sin(a)
 
 
-def arc(cx, cy, r, a0, a1, color, w, cap="round"):
+def arc(cx, cy, r, a0, a1, color, w, cap="butt"):
     x0, y0 = _pol(cx, cy, r, a0)
     x1, y1 = _pol(cx, cy, r, a1)
     large = 1 if (a1 - a0) % 360 > 180 else 0
@@ -37,7 +38,7 @@ def ring(x, y, r, color, w, op=1.0):
 
 
 def geom(x0, y0, H):
-    w = H * 0.1
+    w = H * WEIGHT
     o1L = x0 + (F_W + GAP) * H
     mL = o1L + (O_W + GAP) * H
     o2L = mL + (M_W + GAP) * H
@@ -74,9 +75,9 @@ def c_hourglass(g, ink, accent, bg):
     pile = (f'<path d="M {cx-ax*0.5:.1f} {cy+ay:.1f} L {cx+ax*0.5:.1f} {cy+ay:.1f} '
             f'L {cx:.1f} {cy+ay*0.45:.1f} Z" fill="{accent}"/>')
     caps = (f'<line x1="{cx-ax*1.1:.1f}" y1="{cy-ay:.1f}" x2="{cx+ax*1.1:.1f}" y2="{cy-ay:.1f}" '
-            f'stroke="{accent}" stroke-width="{g["w"]*0.62:.1f}" stroke-linecap="round"/>'
+            f'stroke="{accent}" stroke-width="{g["w"]*0.62:.1f}" stroke-linecap="butt"/>'
             f'<line x1="{cx-ax*1.1:.1f}" y1="{cy+ay:.1f}" x2="{cx+ax*1.1:.1f}" y2="{cy+ay:.1f}" '
-            f'stroke="{accent}" stroke-width="{g["w"]*0.62:.1f}" stroke-linecap="round"/>')
+            f'stroke="{accent}" stroke-width="{g["w"]*0.62:.1f}" stroke-linecap="butt"/>')
     return "", body + top_sand + pile + caps, "FOMO"
 
 
@@ -136,7 +137,7 @@ def c_pull(g, ink, accent, bg):
         wx2, wy2 = _pol(cx, cy, d + w * 1.1, ang - 7)
         over.append(f'<path d="M {wx1:.1f} {wy1:.1f} L {tipx:.1f} {tipy:.1f} L {wx2:.1f} {wy2:.1f}" '
                     f'fill="none" stroke="{accent}" stroke-width="{w*0.6:.1f}" '
-                    f'stroke-linecap="round" stroke-linejoin="round"/>')
+                    f'stroke-linecap="butt" stroke-linejoin="round"/>')
     return "", "".join(over), "FOMO"
 
 
@@ -147,37 +148,37 @@ COMBOS = dict(notify=c_notify, hourglass=c_hourglass, missing=c_missing,
 # ---------------------------------------------------------------------------
 CONCEPTS = [
     dict(num="F1", name="MISSING PIECE", tline="Das fehlende Stueck – du fehlst",
-         combo="missing", cap="round", primary="#3B352D", accent="#CBB489",
+         combo="missing", cap="butt", primary="#3B352D", accent="#CBB489",
          light_bg="#F1ECE2", dark_bg="#2E2920", dark_ink="#ECE3D2",
          desc="Das letzte O hat eine Luecke, ein Punkt wartet ausserhalb: genau "
               "dort gehoerst du hin. Die direkteste Darstellung von 'Fear Of "
               "Missing Out' – das Bild, das fehlt, bist du. Warmes Taupe & Champagner."),
     dict(num="F2", name="LEFT OUT", tline="Aussen vor",
-         combo="leftout", cap="round", primary="#37413A", accent="#BFA97C",
+         combo="leftout", cap="butt", primary="#37413A", accent="#BFA97C",
          light_bg="#EDEAE0", dark_bg="#2A322C", dark_ink="#E8E4D5",
          desc="Im letzten O versammelt sich die Gruppe, ein leerer Ring steht "
               "ausserhalb – ausgeschlossen sein, nicht dazugehoeren. Das Kerngefuehl "
               "von FOMO, ruhig in gedecktem Salbei und Gold erzaehlt."),
     dict(num="F3", name="RUNNING OUT", tline="Die Zeit laeuft ab",
-         combo="hourglass", cap="round", primary="#36414C", accent="#C7B488",
+         combo="hourglass", cap="butt", primary="#36414C", accent="#C7B488",
          light_bg="#EEEAE2", dark_bg="#2B333B", dark_ink="#E9E4D7",
          desc="Eine Sanduhr im letzten O: jetzt oder nie. Dringlichkeit und "
               "ablaufende Zeit sind der Motor jeder FOMO. Gedecktes Schiefer-Blau "
               "und warmer Sand wirken edel und seriös."),
     dict(num="F4", name="FADING", tline="Der Moment verfliegt",
-         combo="fading", cap="round", primary="#3C3038", accent="#C2A07F",
+         combo="fading", cap="butt", primary="#3C3038", accent="#C2A07F",
          light_bg="#EFEAE6", dark_bg="#2E252B", dark_ink="#ECE2DE",
          desc="Vom letzten O steigen feine Partikel auf und vergehen – der Moment, "
               "der dir gerade entgleitet. Das O bleibt klar lesbar, das Verpassen "
               "wird leise spuerbar. Gedecktes Pflaume und Rosé-Gold, sehr zurueckhaltend."),
     dict(num="F5", name="THE PULL", tline="Der Sog, dabei zu sein",
-         combo="pull", cap="round", primary="#2E3239", accent="#C3AC82",
+         combo="pull", cap="butt", primary="#2E3239", accent="#C3AC82",
          light_bg="#EEEBE4", dark_bg="#262A30", dark_ink="#E9E5DB",
          desc="Vier feine Pfeile ziehen zum letzten O hin – der Sog, Teil davon "
               "sein zu wollen. FOMO als Anziehung. Reduziert, edel, in gedecktem "
               "Schiefer und weichem Messing."),
     dict(num="F6", name="ALERT", tline="Es passiert gerade etwas",
-         combo="notify", cap="round", primary="#2F2E2B", accent="#C19A6B",
+         combo="notify", cap="butt", primary="#2F2E2B", accent="#C19A6B",
          light_bg="#F1ECE4", dark_bg="#2A2825", dark_ink="#EDE6D8",
          desc="Ein gedeckter Signalpunkt am letzten O: da draussen passiert "
               "gerade etwas, sei dabei. Die vertraute Notification – aber in einem "
@@ -186,7 +187,7 @@ CONCEPTS = [
 
 
 def lockup(c, cx, cy, H, ink, accent, bg, tagcol, tag=True):
-    w = H * 0.1
+    w = H * WEIGHT
     ww = TOTAL * H
     x0 = cx - ww / 2
     tg = H * 0.42 if tag else 0
