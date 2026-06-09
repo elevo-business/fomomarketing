@@ -219,8 +219,8 @@ def overview_page():
         _MARK_FN[0] = MARKS[c["mark"]]
         gx, gy = xs[i % 3], ys[i // 3]
         p.append(card(gx, gy, cw, ch, c["light_bg"], stroke="#0000000f"))
-        cx, cyc = gx + cw / 2, gy + ch / 2 - 14
-        p.append(lockup(cx, cyc, 0.62, c["primary"], c["primary"], tag=True))
+        cx, cyc = gx + cw / 2, gy + ch / 2 + 6
+        p.append(lockup(cx, cyc, 0.5, c["primary"], c["primary"], tag=True))
         p.append(f'<text x="{gx+18}" y="{gy+ch-16}" font-family="{FONT}" font-size="13" '
                  f'font-weight="800" letter-spacing="1.5" fill="{c["primary"]}">{c["num"]} {esc(c["name"])}</text>')
     p.append('</svg>')
