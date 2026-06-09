@@ -117,3 +117,9 @@ mit der hochwertigen seriösen Grotesk.
 | C6 | RADAR | Espresso & Beige |
 
 - `FOMO_Marketing_Logo_Konzepte_Bildmarken.pdf` (8 Seiten) · `python3 logo/generate_marks.py`
+
+## Update: facettenreich – verschiedene Schriften UND Formen
+Jeder Entwurf kombiniert eine eigene Form, Schrift und Farbe (echte Fonts):
+C1 Bullseye/Poppins/Weinrot · C2 Crosshair/Oswald/Navy · C3 Enter/Playfair/Gruen
+· C4 Twin/Josefin Sans/Pflaume · C5 Quartett/Lora/Petrol · C6 Radar/Cinzel/Espresso.
+Fonts liegen in ~/.local/share/fonts und werden als Outline in die PDF eingebettet.

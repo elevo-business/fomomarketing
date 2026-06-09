@@ -91,52 +91,61 @@ BEIGE_DK = "#E7DBC2"
 CONCEPTS = [
     dict(num="C1", name="BULLSEYE", tline="Weinrot & Beige – im Zentrum",
          mark="bullseye", primary="#6E2433", light_bg="#F0E8D8", dark_bg="#3A111B", dark_ink="#EBDFC8",
+         font="Poppins SemiBold", fweight=600, fsize=92, ftrack=6, fontname="Poppins",
          desc="Der Favorit: konzentrische Ringe als Ziel – im Zentrum der "
-              "Aufmerksamkeit. Tiefes Weinrot auf warmem Beige, edel und "
-              "charaktervoll. Die klare Hauptrichtung der Marke."),
+              "Aufmerksamkeit. Schrift: Poppins (geometrische Grotesk), modern "
+              "und premium. Tiefes Weinrot auf warmem Beige."),
     dict(num="C2", name="CROSSHAIR", tline="Marineblau & Beige – Praezision",
          mark="crosshair", primary="#1C2A44", light_bg="#ECE6DA", dark_bg="#111C30", dark_ink="#E7DBC2",
-         desc="Ein Fadenkreuz mit Zielring – Genauigkeit und Fokus. Marineblau "
-              "und Beige wirken seriös und praezise. Variante derselben Idee, "
-              "etwas technischer und bestimmter."),
+         font="Oswald", fweight=600, fsize=104, ftrack=7, fontname="Oswald",
+         desc="Ein Fadenkreuz mit Zielring – Genauigkeit und Fokus. Schrift: "
+              "Oswald (schmale, bestimmte Grotesk), technisch und selbstbewusst. "
+              "Marineblau auf Beige."),
     dict(num="C3", name="ENTER", tline="Tannengruen & Beige – eintreten",
          mark="open", primary="#1F3D2F", light_bg="#EAE6D6", dark_bg="#122619", dark_ink="#E7DDC6",
-         desc="Ein offener Ring mit Punkt: der Schritt hinein in den Kreis – das "
-              "Gegenteil von aussen vor sein. Erzaehlt die FOMO-Idee direkt. "
-              "Tannengruen und Beige, natuerlich und vornehm."),
+         font="Playfair Display", fweight=700, fsize=92, ftrack=3, fontname="Playfair Display",
+         desc="Ein offener Ring mit Punkt: der Schritt hinein in den Kreis. "
+              "Schrift: Playfair Display (eleganter Didone-Serif), luxurioes und "
+              "redaktionell. Tannengruen auf Beige."),
     dict(num="C4", name="TWIN", tline="Pflaume & Beige – Verbindung",
          mark="twin", primary="#3A2440", light_bg="#ECE5DA", dark_bg="#221329", dark_ink="#E9DFD2",
-         desc="Zwei ueberlappende Ringe – die beiden O's von FOMO und ihre "
-              "Schnittmenge, der gemeinsame Moment. Pflaumen-Violett auf Beige, "
-              "kreativ und luxurioes. Freundlich und einpraegsam."),
+         font="Josefin Sans", fweight=600, fsize=98, ftrack=7, fontname="Josefin Sans",
+         desc="Zwei ueberlappende Ringe – die beiden O's von FOMO. Schrift: "
+              "Josefin Sans (geometrisch, Art-Deco-Anmutung), elegant und leicht. "
+              "Pflaumen-Violett auf Beige."),
     dict(num="C5", name="QUARTETT", tline="Petrol & Beige – vier werden eins",
          mark="pinwheel", primary="#163B40", light_bg="#E8E6DC", dark_bg="#0C2528", dark_ink="#E3DDCB",
-         desc="Vier Bogensegmente (F-O-M-O) fuegen sich zu einem Kreis – das "
-              "Ganze, das man nicht verpassen will. Gedecktes Petrol und Beige, "
-              "modern und dynamisch."),
+         font="Lora", fweight=600, fsize=88, ftrack=3, fontname="Lora",
+         desc="Vier Bogensegmente fuegen sich zu einem Kreis. Schrift: Lora "
+              "(humanistischer Serif), warm und vertrauenswuerdig. Gedecktes "
+              "Petrol auf Beige."),
     dict(num="C6", name="RADAR", tline="Espresso & Beige – Aufmerksamkeit",
          mark="radar", primary="#3B2A21", light_bg="#F0E8D7", dark_bg="#221710", dark_ink="#E8DDC8",
-         desc="Ein Radar erfasst, was gerade passiert – Aufmerksamkeit und "
-              "Reichweite. Warmes Espresso-Braun auf Beige wirkt erdig und "
-              "hochwertig wie feines Leder."),
+         font="Cinzel", fweight=600, fsize=78, ftrack=5, fontname="Cinzel",
+         desc="Ein Radar erfasst, was gerade passiert. Schrift: Cinzel (roemische "
+              "Versal-Serife), sehr edel und zeitlos. Warmes Espresso-Braun auf "
+              "Beige wie feines Leder."),
 ]
 
 
 def lockup(cx, cy, scale, ink, tagcol, tag=True):
+    fs = _FS[0]
     out = [f'<g transform="translate({cx:.1f} {cy-92*scale:.1f}) scale({scale}) translate({-cx:.1f} {-cy:.1f})">']
     out.append(_current_mark(cx, cy, ink))
     out.append('</g>')
     if tag:
-        out.append(f'<text x="{cx:.1f}" y="{cy+96*scale:.1f}" font-family="Poppins SemiBold" '
-                   f'font-size="{92*scale:.1f}" letter-spacing="{6*scale:.2f}" '
+        out.append(f'<text x="{cx:.1f}" y="{cy+96*scale:.1f}" font-family="{fs["font"]}" '
+                   f'font-weight="{fs["fweight"]}" font-size="{fs["fsize"]*scale:.1f}" '
+                   f'letter-spacing="{fs["ftrack"]*scale:.2f}" '
                    f'text-anchor="middle" fill="{ink}">FOMO</text>')
-        out.append(f'<text x="{cx:.1f}" y="{cy+130*scale:.1f}" font-family="Poppins Medium" '
+        out.append(f'<text x="{cx:.1f}" y="{cy+132*scale:.1f}" font-family="Poppins Medium" '
                    f'font-size="{18*scale:.1f}" letter-spacing="{7*scale:.2f}" '
                    f'text-anchor="middle" fill="{tagcol}">MARKETING</text>')
     return "".join(out)
 
 
 _MARK_FN = [None]
+_FS = [None]
 
 
 def _current_mark(cx, cy, ink):
@@ -145,6 +154,7 @@ def _current_mark(cx, cy, ink):
 
 def concept_page(c):
     _MARK_FN[0] = MARKS[c["mark"]]
+    _FS[0] = c
     p = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H_PAGE}" '
          f'viewBox="0 0 {W} {H_PAGE}">',
          '<defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%">'
@@ -154,7 +164,7 @@ def concept_page(c):
     p.append(f'<text x="80" y="86" font-family="{FONT}" font-size="20" font-weight="800" '
              f'letter-spacing="4" fill="{c["primary"]}">FOMO MARKETING</text>')
     p.append(f'<text x="80" y="112" font-family="{FONT}" font-size="13" letter-spacing="3" '
-             f'fill="#999">BULLSEYE-RICHTUNG &#183; ENTWURF {c["num"]}</text>')
+             f'fill="#999">ENTWURF {c["num"]} &#183; FORM + SCHRIFT: {esc(c["fontname"].upper())}</text>')
     p.append(f'<text x="{W-80}" y="92" font-family="{FONT}" font-size="42" font-weight="800" '
              f'text-anchor="end" fill="{c["primary"]}">{esc(c["name"])}</text>')
     p.append(f'<text x="{W-80}" y="116" font-family="{FONT}" font-size="14" font-style="italic" '
@@ -187,6 +197,7 @@ def concept_page(c):
 def cover_page():
     c = CONCEPTS[0]
     _MARK_FN[0] = MARKS[c["mark"]]
+    _FS[0] = c
     p = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H_PAGE}" '
          f'viewBox="0 0 {W} {H_PAGE}">',
          f'<rect width="{W}" height="{H_PAGE}" fill="{c["dark_bg"]}"/>']
@@ -218,6 +229,7 @@ def overview_page():
     xs, ys = [90, 510, 930], [180, 490]
     for i, c in enumerate(CONCEPTS):
         _MARK_FN[0] = MARKS[c["mark"]]
+        _FS[0] = c
         gx, gy = xs[i % 3], ys[i // 3]
         p.append(card(gx, gy, cw, ch, c["light_bg"], stroke="#0000000f"))
         cx, cyc = gx + cw / 2, gy + ch / 2 + 6
