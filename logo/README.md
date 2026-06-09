@@ -101,3 +101,19 @@ gedeckte, edle Farben (nichts Buntes). Wired & Buzz wurden verworfen.
 
 - `FOMO_Marketing_Logo_Konzepte_FOMO.pdf` — Praesentation (8 Seiten)
 - Generator: `python3 logo/generate_fomo2.py`
+
+## Set (aktualisiert): BULLSEYE-RICHTUNG – facettenreich
+`generate_marks.py` erzeugt jetzt 6 kreisfoermige Marken-FORMEN zur Auswahl,
+monochrom-edel, Hauptfarbe Weinrot & Beige plus weitere edle Farbvarianten,
+mit der hochwertigen seriösen Grotesk.
+
+| # | Form | Farbe |
+|---|------|-------|
+| C1 | BULLSEYE (Favorit) | Weinrot & Beige |
+| C2 | CROSSHAIR | Marineblau & Beige |
+| C3 | ENTER (offener Ring) | Tannengruen & Beige |
+| C4 | TWIN (zwei Ringe) | Pflaume & Beige |
+| C5 | QUARTETT (4 Boegen) | Petrol & Beige |
+| C6 | RADAR | Espresso & Beige |
+
+- `FOMO_Marketing_Logo_Konzepte_Bildmarken.pdf` (8 Seiten) · `python3 logo/generate_marks.py`
