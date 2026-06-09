@@ -127,11 +127,12 @@ def lockup(cx, cy, scale, ink, tagcol, tag=True):
     out.append(_current_mark(cx, cy, ink))
     out.append('</g>')
     if tag:
-        wmH = 56 * scale
-        ww = word_width("FOMO", wmH)
-        wy = cy + 58 * scale
-        out.append(draw_word("FOMO", cx - ww / 2, wy, wmH, wmH * WEIGHT, ink, ink, "butt", "plain"))
-        out.append(tagline(cx, wy + wmH + wmH * 0.52, wmH * 0.32, tagcol, spacing=wmH * 0.32 * 0.7))
+        out.append(f'<text x="{cx:.1f}" y="{cy+96*scale:.1f}" font-family="Poppins SemiBold" '
+                   f'font-size="{92*scale:.1f}" letter-spacing="{6*scale:.2f}" '
+                   f'text-anchor="middle" fill="{ink}">FOMO</text>')
+        out.append(f'<text x="{cx:.1f}" y="{cy+130*scale:.1f}" font-family="Poppins Medium" '
+                   f'font-size="{18*scale:.1f}" letter-spacing="{7*scale:.2f}" '
+                   f'text-anchor="middle" fill="{tagcol}">MARKETING</text>')
     return "".join(out)
 
 
