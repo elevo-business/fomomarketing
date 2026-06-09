@@ -53,3 +53,19 @@ verstaendlich, das Wort muss erkennbar bleiben).
 
 - `FOMO_Marketing_Logo_Konzepte_Verbunden.pdf` — Praesentation (8 Seiten)
 - Generator: `python3 logo/generate_connected.py`
+
+## Set: BILDMARKEN / EMBLEME (Symbol-Logos)
+Eigenstaendige Zeichen im Geist von Audi / VW / Mastercard – als Marke
+erkennbar, ohne sie lesen zu muessen. Darunter jeweils die FOMO-Wortmarke.
+
+| # | Name | Vorbild / Idee |
+|---|------|----------------|
+| M1 | VIER RINGE | Audi – 4 Ringe = F·O·M·O |
+| M2 | F-SIEGEL | VW – Monogramm im Kreis |
+| M3 | DOPPEL-O | Mastercard – zwei ueberlappende Kreise |
+| M4 | DER KREIS | offener Ring + Punkt: eintreten, nichts verpassen |
+| M5 | BULLSEYE | Ziel/Orbit: im Zentrum der Aufmerksamkeit |
+| M6 | QUARTETT | vier Boegen fuegen sich zu einem Kreis |
+
+- `FOMO_Marketing_Logo_Konzepte_Bildmarken.pdf` — Praesentation (8 Seiten)
+- Generator: `python3 logo/generate_marks.py`
