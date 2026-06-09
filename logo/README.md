@@ -20,3 +20,19 @@ Wiedererkennungsmerkmal von "F-OMO".
 - `generate.py` — Generator (Python + cairosvg)
 
 Neu erzeugen: `python3 logo/generate.py`
+
+## Hybrid-Set: ECLIPSE × CREST (edle Farben)
+Mischung aus Wappen-Emblem (CREST) und zweifarbigem Eklipse-Ring (ECLIPSE),
+mit dezentem Metall-Verlauf auf dem Akzent.
+
+| # | Name | Rahmen | Primär / Akzent |
+|---|------|--------|------------------|
+| H1 | ROYAL ECLIPSE | Quadrat | Marineblau / Champagner-Gold |
+| H2 | OXBLOOD SEAL | Schild | Oxblood / Antik-Gold |
+| H3 | NOIR & OR | Kreis | Schwarz / Warmgold |
+| H4 | EMERALD CREST | Oval | Smaragd / Gold |
+| H5 | AUBERGINE ROYALE | Hexagon | Aubergine / Sandgold |
+| H6 | MIDNIGHT PLATINUM | Quadrat | Mitternachtsblau / Platin |
+
+- `FOMO_Marketing_Logo_Konzepte_Hybrid.pdf` — Präsentation (8 Seiten)
+- Generator: `python3 logo/generate_hybrid.py`
