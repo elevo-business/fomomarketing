@@ -36,3 +36,20 @@ mit dezentem Metall-Verlauf auf dem Akzent.
 
 - `FOMO_Marketing_Logo_Konzepte_Hybrid.pdf` — Präsentation (8 Seiten)
 - Generator: `python3 logo/generate_hybrid.py`
+
+## Set: VERBUNDENE / VERSCHRAENKTE Buchstaben
+Immer das ganze Wort FOMO – lesbar, aber die Buchstaben sind verbunden,
+verwoben oder ueberlappend gestaltet (Feedback: "OMO" allein ist nicht
+verstaendlich, das Wort muss erkennbar bleiben).
+
+| # | Name | Idee |
+|---|------|------|
+| V1 | INTERLACE | leicht verwobene Buchstaben, O's in Gold |
+| V2 | CHAIN | groessere O-Ringe greifen wie Kettenglieder ueber das M |
+| V3 | LIGATURE | durchgehende Mittellinie verbindet alle Buchstaben |
+| V4 | DUOTONE | transparente Ueberlagerung, Smaragd/Gold |
+| V5 | MONOGRAM | kompaktes FO/MO-Zeichen + lesbare Wortmarke |
+| V6 | BRIDGE | gemeinsame Oberlinie fasst FOMO zusammen |
+
+- `FOMO_Marketing_Logo_Konzepte_Verbunden.pdf` — Praesentation (8 Seiten)
+- Generator: `python3 logo/generate_connected.py`
