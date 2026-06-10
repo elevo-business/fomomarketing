@@ -252,10 +252,46 @@ def overview_page():
     return "".join(p)
 
 
+def slogan_page():
+    c = next(x for x in CONCEPTS if x["num"] == "C4")
+    _MARK_FN[0] = MARKS[c["mark"]]
+    _FS[0] = c
+    p = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H_PAGE}" '
+         f'viewBox="0 0 {W} {H_PAGE}">',
+         '<defs><filter id="soft" x="-20%" y="-20%" width="140%" height="140%">'
+         '<feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="#000" flood-opacity="0.12"/>'
+         '</filter></defs>',
+         f'<rect width="{W}" height="{H_PAGE}" fill="#FBFAF7"/>']
+    p.append(f'<text x="80" y="86" font-family="{FONT}" font-size="20" font-weight="800" '
+             f'letter-spacing="4" fill="{c["primary"]}">FOMO MARKETING</text>')
+    p.append(f'<text x="80" y="112" font-family="{FONT}" font-size="13" letter-spacing="3" '
+             f'fill="#999">ENTWURF C4 TWIN &#183; LOGO MIT CLAIM (EINZELN)</text>')
+    p.append(f'<text x="{W-80}" y="92" font-family="{FONT}" font-size="42" font-weight="800" '
+             f'text-anchor="end" fill="{c["primary"]}">TWIN + CLAIM</text>')
+    p.append(f'<line x1="80" y1="138" x2="{W-80}" y2="138" stroke="{c["primary"]}" stroke-width="2"/>')
+
+    xs = [70, 495, 920]
+    cw, cy, ch = 410, 168, 660
+    for i, s in enumerate(c["slogans"]):
+        gx = xs[i]
+        cx = gx + cw / 2
+        p.append(card(gx, cy, cw, ch, c["light_bg"], stroke="#0000000f"))
+        p.append(lockup(cx, cy + 220, 0.62, c["primary"], c["primary"]))
+        # Slogan unter dem Logo, zentriert, ggf. zweizeilig
+        sy = cy + 430
+        for j, ln in enumerate(wrap(s, 24)):
+            p.append(f'<text x="{cx:.0f}" y="{sy+j*30}" font-family="Lora" font-style="italic" '
+                     f'font-size="20" text-anchor="middle" fill="{c["primary"]}">{esc(ln)}</text>')
+    p.append('</svg>')
+    return "".join(p)
+
+
 def main():
     pages = [("MK0_cover", cover_page())]
     for c in CONCEPTS:
         pages.append((f'{c["num"]}_{c["mark"]}', concept_page(c)))
+        if c["num"] == "C4":
+            pages.append(("C4_claims", slogan_page()))
     pages.append(("MK9_overview", overview_page()))
     writer = PdfWriter()
     for name, svg in pages:
