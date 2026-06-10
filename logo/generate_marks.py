@@ -271,17 +271,18 @@ def slogan_page():
     p.append(f'<line x1="80" y1="138" x2="{W-80}" y2="138" stroke="{c["primary"]}" stroke-width="2"/>')
 
     xs = [70, 495, 920]
-    cw, cy, ch = 410, 168, 660
+    cw, cy, ch = 410, 240, 500
+    scale = 0.92
     for i, s in enumerate(c["slogans"]):
         gx = xs[i]
         cx = gx + cw / 2
         p.append(card(gx, cy, cw, ch, c["light_bg"], stroke="#0000000f"))
-        p.append(lockup(cx, cy + 220, 0.62, c["primary"], c["primary"]))
-        # Slogan unter dem Logo, zentriert, ggf. zweizeilig
-        sy = cy + 430
-        for j, ln in enumerate(wrap(s, 24)):
-            p.append(f'<text x="{cx:.0f}" y="{sy+j*30}" font-family="Lora" font-style="italic" '
-                     f'font-size="20" text-anchor="middle" fill="{c["primary"]}">{esc(ln)}</text>')
+        cylock = cy + ch / 2 - 6
+        p.append(lockup(cx, cylock, scale, c["primary"], c["primary"]))
+        sy = cylock + 132 * scale + 42
+        for j, ln in enumerate(wrap(s, 22)):
+            p.append(f'<text x="{cx:.0f}" y="{sy+j*30:.0f}" font-family="Lora" font-style="italic" '
+                     f'font-size="22" text-anchor="middle" fill="{c["primary"]}">{esc(ln)}</text>')
     p.append('</svg>')
     return "".join(p)
 
@@ -303,6 +304,14 @@ def main():
     with open("logo/FOMO_Marketing_Logo_Konzepte_Bildmarken.pdf", "wb") as f:
         writer.write(f)
     print("PDF: logo/FOMO_Marketing_Logo_Konzepte_Bildmarken.pdf")
+
+    # Eigenstaendiges Dokument: nur "Twin + Claim"
+    only = PdfWriter()
+    only.append(PdfReader(io.BytesIO(
+        cairosvg.svg2pdf(bytestring=slogan_page().encode(), output_width=W * 2, output_height=H_PAGE * 2))))
+    with open("logo/FOMO_Marketing_Twin_Claim.pdf", "wb") as f:
+        only.write(f)
+    print("PDF: logo/FOMO_Marketing_Twin_Claim.pdf")
 
 
 if __name__ == "__main__":
