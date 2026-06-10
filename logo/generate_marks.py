@@ -110,6 +110,9 @@ CONCEPTS = [
     dict(num="C4", name="TWIN", tline="Pflaume & Beige – Verbindung",
          mark="twin", primary="#3A2440", light_bg="#ECE5DA", dark_bg="#221329", dark_ink="#E9DFD2",
          font="Josefin Sans", fweight=600, fsize=98, ftrack=7, fontname="Josefin Sans",
+         slogans=["Don't watch the trend. Be it.",
+                  "The organic dopamine.",
+                  "If you're not on the feed, you don't exist."],
          desc="Zwei ueberlappende Ringe – die beiden O's von FOMO. Schrift: "
               "Josefin Sans (geometrisch, Art-Deco-Anmutung), elegant und leicht. "
               "Pflaumen-Violett auf Beige."),
@@ -185,8 +188,17 @@ def concept_page(c):
              f'letter-spacing="2" fill="#ffffff66">DUNKLER UNTERGRUND</text>')
 
     fy = cy + ch + 44
-    for i, ln in enumerate(wrap(c["desc"], 96)):
-        p.append(f'<text x="80" y="{fy+i*22}" font-family="{FONT}" font-size="15" fill="#333">{esc(ln)}</text>')
+    if c.get("slogans"):
+        p.append(f'<text x="80" y="{fy-4}" font-family="{FONT}" font-size="12" '
+                 f'letter-spacing="3" fill="#999">MARKEN-CLAIMS</text>')
+        for i, s in enumerate(c["slogans"]):
+            yy = fy + 26 + i * 34
+            p.append(f'<rect x="80" y="{yy-15:.0f}" width="4" height="20" fill="{c["primary"]}"/>')
+            p.append(f'<text x="100" y="{yy}" font-family="Lora" font-style="italic" '
+                     f'font-size="21" fill="{c["primary"]}">{esc(s)}</text>')
+    else:
+        for i, ln in enumerate(wrap(c["desc"], 96)):
+            p.append(f'<text x="80" y="{fy+i*22}" font-family="{FONT}" font-size="15" fill="#333">{esc(ln)}</text>')
     pal = [(c["primary"], "PRIMAER"), (c["light_bg"], "BEIGE / HELL"),
            (c["dark_bg"], "DUNKEL"), (BEIGE_DK, "BEIGE-MARKE")]
     p.append(swatches(812, fy - 14, pal))
