@@ -296,9 +296,12 @@ def radar_claim_page():
          f'viewBox="0 0 {W} {H_PAGE}">',
          f'<rect width="{W}" height="{H_PAGE}" fill="{c["light_bg"]}"/>']
     p.append(lockup(W / 2, cy, scale, c["primary"], c["primary"]))
-    claim = "Don't watch the trend… be it !"
-    p.append(f'<text x="{W/2:.0f}" y="{cy+132*scale+74:.0f}" font-family="Lora" font-style="italic" '
-             f'font-size="38" text-anchor="middle" fill="{c["primary"]}">{esc(claim)}</text>')
+    mk = cy + 132 * scale
+    p.append(f'<line x1="{W/2-46:.0f}" y1="{mk+54:.0f}" x2="{W/2+46:.0f}" y2="{mk+54:.0f}" '
+             f'stroke="{c["primary"]}" stroke-width="1.2"/>')
+    claim = "DON'T WATCH THE TREND… BE IT!"
+    p.append(f'<text x="{W/2:.0f}" y="{mk+98:.0f}" font-family="Cinzel" font-weight="600" '
+             f'font-size="27" letter-spacing="6" text-anchor="middle" fill="{c["primary"]}">{esc(claim)}</text>')
     p.append('</svg>')
     return "".join(p)
 
