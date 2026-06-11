@@ -287,6 +287,22 @@ def slogan_page():
     return "".join(p)
 
 
+def radar_claim_page():
+    c = next(x for x in CONCEPTS if x["num"] == "C6")
+    _MARK_FN[0] = MARKS[c["mark"]]
+    _FS[0] = c
+    cy, scale = H_PAGE / 2 - 30, 1.5
+    p = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H_PAGE}" '
+         f'viewBox="0 0 {W} {H_PAGE}">',
+         f'<rect width="{W}" height="{H_PAGE}" fill="{c["light_bg"]}"/>']
+    p.append(lockup(W / 2, cy, scale, c["primary"], c["primary"]))
+    claim = "Don't watch the trend… be it !"
+    p.append(f'<text x="{W/2:.0f}" y="{cy+132*scale+74:.0f}" font-family="Lora" font-style="italic" '
+             f'font-size="38" text-anchor="middle" fill="{c["primary"]}">{esc(claim)}</text>')
+    p.append('</svg>')
+    return "".join(p)
+
+
 def main():
     pages = [("MK0_cover", cover_page())]
     for c in CONCEPTS:
@@ -312,6 +328,17 @@ def main():
     with open("logo/FOMO_Marketing_Twin_Claim.pdf", "wb") as f:
         only.write(f)
     print("PDF: logo/FOMO_Marketing_Twin_Claim.pdf")
+
+    # Eigenstaendiges Dokument: Radar (C6) mit Claim
+    rc = PdfWriter()
+    rsvg = radar_claim_page()
+    with open("logo/svg/C6_radar_claim.svg", "w") as f:
+        f.write(rsvg)
+    rc.append(PdfReader(io.BytesIO(
+        cairosvg.svg2pdf(bytestring=rsvg.encode(), output_width=W * 2, output_height=H_PAGE * 2))))
+    with open("logo/FOMO_Marketing_Radar_Claim.pdf", "wb") as f:
+        rc.write(f)
+    print("PDF: logo/FOMO_Marketing_Radar_Claim.pdf")
 
 
 if __name__ == "__main__":
