@@ -4,9 +4,8 @@
 
   // ---- CONFIG (bitte mit echten Daten ersetzen) ----
   var CONFIG = {
-    eventDate: '2026-09-24T18:30:00+02:00', // TODO: finales Event-Datum bestätigen
     whatsapp: '4917675892012',
-    waText: 'Hallo FOMO Marketing, ich möchte mir einen Platz bei FOMO LIVE 26 sichern.',
+    waText: 'Hallo FOMO Marketing, ich möchte mir einen Platz bei FOMO LIVE sichern.',
     leadEndpoint: 'api/lead.php', // optional PHP-Backend; faellt sonst auf E-Mail/WhatsApp zurueck
     email: 'event@fomo-marketing.de' // TODO: echte Event-E-Mail
   };
@@ -14,7 +13,6 @@
   function $(s, c) { return (c || document).querySelector(s); }
   function $all(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
   function fmt(n) { return Math.round(n).toLocaleString('de-DE'); }
-  function pad(n) { return (n < 10 ? '0' : '') + n; }
 
   document.addEventListener('DOMContentLoaded', function () {
     // year
@@ -27,9 +25,6 @@
     // marquee: duplicate track for seamless loop
     var mq = document.getElementById('marqueeTrack');
     if (mq) mq.innerHTML += mq.innerHTML;
-
-    // countdown
-    initCountdown();
 
     // sticky mobile CTA: show after hero, hide while ticket section is visible
     var mcta = document.getElementById('mobileCta');
@@ -152,32 +147,6 @@
     if (window.lucide) lucide.createIcons();
   });
 
-  // ---- COUNTDOWN ----
-  function initCountdown() {
-    var box = document.getElementById('countdown'); if (!box) return;
-    var target = new Date(CONFIG.eventDate).getTime();
-    if (isNaN(target)) return;
-    var d = document.getElementById('cdDays'), h = document.getElementById('cdHours'),
-      m = document.getElementById('cdMins'), s = document.getElementById('cdSecs');
-    var timer = setInterval(tick, 1000);
-    function tick() {
-      var diff = target - Date.now();
-      if (diff <= 0) {
-        clearInterval(timer);
-        box.classList.add('over');
-        box.innerHTML = '<div class="cd-cell"><div class="cd-num num accent">Heute ist es so weit.</div><div class="cd-label">FOMO LIVE 26 läuft — wir sehen uns im Raum.</div></div>';
-        return;
-      }
-      var days = Math.floor(diff / 86400000),
-        hours = Math.floor(diff % 86400000 / 3600000),
-        mins = Math.floor(diff % 3600000 / 60000),
-        secs = Math.floor(diff % 60000 / 1000);
-      d.textContent = pad(days); h.textContent = pad(hours);
-      m.textContent = pad(mins); s.textContent = pad(secs);
-    }
-    tick();
-  }
-
   // ---- LEAD FORM ----
   function initForm() {
     var form = document.getElementById('leadForm'); if (!form) return;
@@ -200,7 +169,7 @@
         if (f.name && f.type !== 'checkbox') data[f.name] = f.value.trim();
       });
       data.consent = form.querySelector('[name="consent"]').checked;
-      data.source = 'fomo-live-26';
+      data.source = 'fomo-live';
 
       if (!data.vorname || !data.nachname || !data.email || !data.telefon || !data.consent) {
         show(false, 'Bitte fülle alle Pflichtfelder aus und bestätige den Datenschutz.');
@@ -226,13 +195,13 @@
       function success() {
         if (btn) { btn.disabled = false; btn.innerHTML = orig; }
         form.reset();
-        show(true, 'Deine Platz-Anfrage ist raus! Du bekommst innerhalb von 24 Stunden eine Bestätigung mit allen Details. 📡');
+        show(true, 'Deine Platz-Anfrage ist raus! Wir melden uns innerhalb von 24 Stunden — Termin & Location erfährst du als Erstes. 📡');
         if (window.lucide) lucide.createIcons();
       }
     });
 
     function fallbackMail(d) {
-      var body = 'Neue Platz-Anfrage für FOMO LIVE 26%0D%0A%0D%0A'
+      var body = 'Neue Platz-Anfrage für FOMO LIVE%0D%0A%0D%0A'
         + 'Name: ' + enc(d.vorname + ' ' + d.nachname) + '%0D%0A'
         + 'E-Mail: ' + enc(d.email) + '%0D%0A'
         + 'Telefon: ' + enc(d.telefon) + '%0D%0A'
@@ -241,7 +210,7 @@
         + 'Plätze: ' + enc(d.plaetze || '1 Person') + '%0D%0A'
         + 'Nachricht: ' + enc(d.nachricht || '-');
       var a = document.createElement('a');
-      a.href = 'mailto:' + CONFIG.email + '?subject=' + enc('FOMO LIVE 26 — Platz-Anfrage: ' + d.vorname + ' ' + d.nachname) + '&body=' + body;
+      a.href = 'mailto:' + CONFIG.email + '?subject=' + enc('FOMO LIVE — Platz-Anfrage: ' + d.vorname + ' ' + d.nachname) + '&body=' + body;
       a.style.display = 'none'; document.body.appendChild(a); a.click(); document.body.removeChild(a);
     }
     function enc(s) { return encodeURIComponent(s || ''); }
@@ -251,7 +220,7 @@
   function initLegal() {
     var content = {
       impressum: '<h2>Impressum</h2><p><strong>Angaben gemäß § 5 TMG</strong></p><p>FOMO Marketing<br>[Inhaber / Firmierung]<br>[Straße &amp; Hausnummer]<br>[PLZ Ort]</p><p><strong>Kontakt</strong><br>E-Mail: event@fomo-marketing.de</p><p style="opacity:.6;font-size:12px;margin-top:18px">Platzhalter — bitte mit den offiziellen Angaben ersetzen.</p>',
-      datenschutz: '<h2>Datenschutz</h2><p>Wir nehmen den Schutz deiner Daten ernst. Über dieses Formular übermittelte Angaben (Name, E-Mail, Telefon, Unternehmen, Nachricht) werden ausschließlich zur Bearbeitung deiner Platz-Anfrage für FOMO LIVE 26 verwendet und nicht an unbefugte Dritte weitergegeben.</p><p>Du kannst der Verarbeitung jederzeit widersprechen und die Löschung deiner Daten verlangen — eine formlose E-Mail an event@fomo-marketing.de genügt.</p><p style="opacity:.6;font-size:12px;margin-top:18px">Platzhalter — bitte vor dem Livegang durch eine vollständige Datenschutzerklärung ersetzen.</p>'
+      datenschutz: '<h2>Datenschutz</h2><p>Wir nehmen den Schutz deiner Daten ernst. Über dieses Formular übermittelte Angaben (Name, E-Mail, Telefon, Unternehmen, Nachricht) werden ausschließlich zur Bearbeitung deiner Platz-Anfrage für FOMO LIVE verwendet und nicht an unbefugte Dritte weitergegeben.</p><p>Du kannst der Verarbeitung jederzeit widersprechen und die Löschung deiner Daten verlangen — eine formlose E-Mail an event@fomo-marketing.de genügt.</p><p style="opacity:.6;font-size:12px;margin-top:18px">Platzhalter — bitte vor dem Livegang durch eine vollständige Datenschutzerklärung ersetzen.</p>'
     };
     var overlay = document.createElement('div');
     overlay.className = 'legal-overlay';

@@ -1,6 +1,6 @@
 <?php
 /**
- * Optionales Lead-Backend für FOMO LIVE 26.
+ * Optionales Lead-Backend für FOMO LIVE.
  *
  * Läuft NUR auf PHP-Hosting (z.B. All-Inkl/Netcup) — NICHT auf GitHub Pages.
  * Auf Pages schlägt der Aufruf fehl und das Formular fällt automatisch auf
@@ -48,9 +48,9 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) respond(false, 'E-Mail ungültig
 if (!$consent) respond(false, 'Einwilligung fehlt');
 if (preg_match('~https?://|www\.~i', $vorname . ' ' . $nachname)) respond(true, 'ok'); // Spam
 
-$subject = 'FOMO LIVE 26 — Platz-Anfrage: ' . $vorname . ' ' . $nachname;
+$subject = 'FOMO LIVE — Platz-Anfrage: ' . $vorname . ' ' . $nachname;
 $lines = array(
-  'Neue Platz-Anfrage für FOMO LIVE 26', '',
+  'Neue Platz-Anfrage für FOMO LIVE', '',
   'Name: ' . $vorname . ' ' . $nachname,
   'E-Mail: ' . $email,
   'Telefon: ' . $telefon,

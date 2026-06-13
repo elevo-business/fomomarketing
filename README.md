@@ -1,46 +1,46 @@
-# FOMO LIVE 26 — Event-Landingpage
+# FOMO LIVE — Event-Landingpage
 
-Conversion-fokussierte Event-Landingpage für **FOMO LIVE 26** — das Live-Event von
+Conversion-fokussierte Event-Landingpage für **FOMO LIVE** — das Live-Event von
 **FOMO Marketing × BrandsMarketingLab** für lokale Brands. Aufgebaut nach dem
-Qualitätsstandard des BML-Repos, neu interpretiert in der FOMO-Radar-Identität
-(dunkel, Radar-Grün, Space-Grotesk-Typo, Radar-Sweep-Animation).
+Qualitätsstandard des BML-Repos, im FOMO-Branding (dunkles Espresso, Beige,
+Cognac-Akzent, Cinzel-Typo, Radar-Sweep-Animation).
+
+Bewusst **ohne Datum/Uhrzeit**: Termin & Location erfahren nur die, die auf der
+Liste stehen — die Seite hat ein einziges Ziel: Platz-Anfragen (Leads) einsammeln.
 
 ## Stack
 - Statisches HTML / CSS / Vanilla JS (kein Build-Step)
-- Fonts: Inter + Space Grotesk · Icons: Lucide (CDN)
+- Fonts: Cinzel + Inter · Icons: Lucide (CDN)
 - Deploy: GitHub Actions → GitHub Pages (Push auf `main`)
 
 ## Struktur
 ```
-index.html              Komplette One-Page-Event-Seite (DE) inkl. OG/Twitter-Tags + Event-JSON-LD
+index.html              Komplette One-Page-Event-Seite (DE) inkl. OG/Twitter-Tags + JSON-LD
 css/style.css           Design-System + Komponenten + Responsive + Mobile-Conversion-Bar
-js/main.js              Interaktion: Countdown, Reveal, Count-up, Lightbox, FAQ, Formular, Legal
-assets/img/             Radar-Logo (SVG), Favicons, OG-Image (1200×630)
+js/main.js              Interaktion: Reveal, Count-up, Lightbox, FAQ, Formular, Legal
+assets/img/             Radar-Logo (SVG, Beige), Favicons, OG-Image (1200×630)
 assets/proof/           Echte BML-Ergebnis-Screenshots (Referenzen-Sektion)
 api/lead.php            Optionales Lead-Backend (nur auf PHP-Hosting; auf Pages inaktiv)
 .github/workflows/      Pages-Deployment
 ```
 
 ## Conversion-Elemente
-- Live-Countdown bis zum Event + Scarcity (100 Plätze, Vergabe auf Anfrage)
+- Scarcity ohne Datum: 100 Plätze, Vergabe nur auf Anfrage, „die Liste erfährt alles zuerst"
 - Echte BML-Referenzen mit Original-Screenshots + Lightbox als Social Proof
-- Agenda-Timeline, „Für wen"-Qualifizierung, FAQ gegen Einwände
+- Programm-Ablauf (nummeriert, ohne Uhrzeiten), „Für wen"-Qualifizierung, FAQ gegen Einwände
 - Platz-Anfrage-Formular mit Honeypot + automatischem E-Mail-Fallback
-- Sticky Mobile-CTA-Bar (WhatsApp + Platz sichern), Scroll-Progress
-- OG/Twitter-Cards mit eigenem 1200×630-Share-Image + schema.org-Event (Rich Results)
+- WhatsApp-Direktanfrage (vorausgefüllt) + Sticky Mobile-CTA-Bar, Scroll-Progress
+- OG/Twitter-Cards mit eigenem 1200×630-Share-Image im Branding
 
 ## ⚠️ Vor dem echten Livegang ersetzen (Platzhalter)
 In `js/main.js` (`CONFIG`):
-- `eventDate` → finales Event-Datum (aktuell: 24.09.2026, 18:30)
-- `whatsapp` → echte WhatsApp-Nummer (Format `49170…`, ohne + / 00)
-- `email` → echte Event-E-Mail
+- `email` → echte Event-E-Mail (aktuell `event@fomo-marketing.de`)
+- `whatsapp` ist bereits gesetzt (`4917675892012`)
 
 Außerdem:
-- **Radar-Logo:** `assets/img/logo-radar.svg` ist ein Platzhalter im Stil des
-  finalen Logos. Sobald das echte Radar-Logo (mit Branding) hochgeladen ist,
-  einfach unter `assets/img/` ablegen und die `logo-radar.svg`-Referenzen in
-  `index.html` tauschen — OG-Image & Favicons dann ebenfalls neu erzeugen.
-- Datum/Uhrzeit/Stadt in `index.html` (Hero-Meta, JSON-LD, OG-Tags) und im OG-Image
+- **Radar-Logo:** `assets/img/logo-radar.svg` ist eine Vektor-Nachbildung des
+  Original-Logos (Beige-Variante für den dunklen Grund). Liegt das Original als
+  Datei vor, einfach unter `assets/img/` ablegen und Referenzen tauschen.
 - Bei eigener Domain: `og:url`, `canonical` und absolute OG-Image-URLs anpassen
 - Impressum & vollständige Datenschutzerklärung (Overlay-Texte in `js/main.js` → `initLegal`)
 
