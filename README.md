@@ -12,7 +12,8 @@ Design: monochrom (dunkles Espresso + Beige, Cinzel), bewusst ohne Akzentfarbe.
 
 ## Stack
 - Statisches HTML / CSS / Vanilla JS (kein Build-Step)
-- Fonts: Cinzel + Inter · Icons: Lucide (CDN)
+- Fonts: Cinzel + Inter — **selbst gehostet** (`assets/fonts/`), Icons inline als SVG
+- Keinerlei Drittanbieter-Requests (DSGVO-sauber, schneller Load)
 - Deploy: GitHub Actions → GitHub Pages (Push auf `main`)
 
 ## Struktur
@@ -21,7 +22,9 @@ index.html              Komplette One-Page-Seite (DE) inkl. OG/Twitter-Tags + JS
 css/style.css           Design-System + Komponenten + Responsive + Mobile-Conversion-Bar
 js/main.js              Interaktion: Reveal, Count-up, Lightbox, FAQ, Formular, Legal
 assets/img/             Radar-Logo (SVG, Beige), Favicons, OG-Image (1200×630)
-assets/proof/           Echte BML-Ergebnis-Screenshots (Referenzen-Sektion)
+assets/proof/           Echte Ergebnis-Screenshots (Referenzen-Sektion)
+assets/brands/          Original-Logos der Referenzen (Crusty Slices, FAVELA, MMML, Arndt)
+assets/fonts/           Selbst gehostete Webfonts (Cinzel, Inter — woff2)
 api/lead.php            Optionales Lead-Backend (nur auf PHP-Hosting; auf Pages inaktiv)
 .github/workflows/      Pages-Deployment
 ```
@@ -37,7 +40,13 @@ api/lead.php            Optionales Lead-Backend (nur auf PHP-Hosting; auf Pages 
   Reduced-Motion-Support, ruhige Animationen auf kleinen Screens
 - OG/Twitter-Cards mit eigenem 1200×630-Share-Image im Branding
 
-## ⚠️ Vor dem echten Livegang ersetzen (Platzhalter)
+## Rechtliches
+Impressum (Crusty Slices GmbH, Fastradaallee 1, 52146 Würselen) und eine
+vollständige Datenschutzerklärung (Hosting, Formular/WhatsApp, Betroffenenrechte)
+sind als Overlays in `js/main.js` → `initLegal` gepflegt. Noch zu ergänzen, sobald
+vorhanden: Name der Geschäftsführung, Handelsregister-Nr. und USt-IdNr.
+
+## Hinweise
 Leads laufen komplett über WhatsApp (`4917675892012`, gesetzt in `js/main.js` →
 `CONFIG`). Es gibt bewusst keine E-Mail-Adresse — falls später eine existiert,
 auf PHP-Hosting die Umgebungsvariable `FOMO_LEAD_EMAIL` setzen (`api/lead.php`).
@@ -47,7 +56,6 @@ Außerdem:
   Original-Logos (Beige-Variante für den dunklen Grund). Liegt das Original als
   Datei vor, einfach unter `assets/img/` ablegen und Referenzen tauschen.
 - Bei eigener Domain: `og:url`, `canonical` und absolute OG-Image-URLs anpassen
-- Impressum & vollständige Datenschutzerklärung (Overlay-Texte in `js/main.js` → `initLegal`)
 
 ## Live
 GitHub Pages: https://elevo-business.github.io/fomomarketing/

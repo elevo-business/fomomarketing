@@ -1,4 +1,16 @@
 /* FOMO Marketing — Landingpage (monochrom: dunkles Espresso · Beige, Cinzel), nach BML-Qualitätsstandard */
+
+/* Selbst gehostete Fonts (DSGVO: keine Google-Server) — variable Weight 400–700 */
+@font-face{font-family:'Cinzel';font-style:normal;font-weight:400 700;font-display:swap;src:url('../assets/fonts/cinzel-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Cinzel';font-style:normal;font-weight:400 700;font-display:swap;src:url('../assets/fonts/cinzel-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url('../assets/fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:swap;src:url('../assets/fonts/inter-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+/* Inline-Icons (statt Icon-CDN) */
+.bic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;display:inline-block}
+.case-zoom .bic,.faq-toggle .bic{width:16px;height:16px}
+.faq-toggle .bic{transition:transform .3s}
+.faq-item.open .faq-toggle .bic{transform:rotate(45deg)}
 @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 var(--accent-glow)}50%{box-shadow:0 0 36px 2px var(--accent-glow)}}
@@ -138,6 +150,8 @@ section{padding:var(--section-pad) 0;position:relative}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee-item{font-family:var(--font-h);font-weight:600;font-size:20px;color:var(--muted);letter-spacing:.04em;white-space:nowrap;display:flex;align-items:center;gap:56px}
 .marquee-item::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.6}
+.marquee-item img{height:26px;width:auto;display:block;filter:brightness(0) invert(.92);opacity:.8}
+.marquee-item img.ml-tall{height:32px}
 
 /* PILLARS */
 .contrast-line{font-family:var(--font-h);font-weight:700;font-size:clamp(21px,3vw,34px);line-height:1.25;letter-spacing:.01em;color:var(--text);max-width:900px}
