@@ -5,7 +5,7 @@
   // ---- CONFIG (bitte mit echten Daten ersetzen) ----
   var CONFIG = {
     eventDate: '2026-09-24T18:30:00+02:00', // TODO: finales Event-Datum bestätigen
-    whatsapp: '491700000000', // TODO: echte WhatsApp-Nummer (Format: Landesvorwahl ohne +/00)
+    whatsapp: '4917675892012',
     waText: 'Hallo FOMO Marketing, ich möchte mir einen Platz bei FOMO LIVE 26 sichern.',
     leadEndpoint: 'api/lead.php', // optional PHP-Backend; faellt sonst auf E-Mail/WhatsApp zurueck
     email: 'event@fomo-marketing.de' // TODO: echte Event-E-Mail
