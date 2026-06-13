@@ -25,6 +25,7 @@ assets/img/             Radar-Logo (SVG, Beige), Favicons, OG-Image (1200×630)
 assets/proof/           Echte Ergebnis-Screenshots (Referenzen-Sektion)
 assets/brands/          Original-Logos der Referenzen (Crusty Slices, FAVELA, MMML, Arndt)
 assets/fonts/           Selbst gehostete Webfonts (Cinzel, Inter — woff2)
+assets/qr/              QR-Codes zur Live-Seite (card = Slide, branded, plain)
 api/lead.php            Optionales Lead-Backend (nur auf PHP-Hosting; auf Pages inaktiv)
 .github/workflows/      Pages-Deployment
 ```
