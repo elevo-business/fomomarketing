@@ -4,7 +4,7 @@
  *
  * Läuft NUR auf PHP-Hosting (z.B. All-Inkl/Netcup) — NICHT auf GitHub Pages.
  * Auf Pages schlägt der Aufruf fehl und das Formular fällt automatisch auf
- * einen vorausgefüllten E-Mail-Entwurf zurück (siehe js/main.js).
+ * eine vorausgefüllte WhatsApp-Nachricht zurück (siehe js/main.js).
  *
  * Nimmt den JSON-Submit entgegen und schickt eine Benachrichtigung per Mail.
  * Optional kann hier ein CRM (z.B. Pipedrive) angebunden werden — Token dann
@@ -23,7 +23,9 @@ function respond($ok, $msg = '') {
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') respond(false, 'Method not allowed');
 
 // ---- Konfiguration ----
-$TO = getenv('FOMO_LEAD_EMAIL'); if (!$TO) $TO = 'event@fomo-marketing.de';
+// Aktuell gibt es keine Event-E-Mail: Mail-Versand laeuft nur, wenn auf dem
+// PHP-Hosting die Umgebungsvariable FOMO_LEAD_EMAIL gesetzt ist.
+$TO = getenv('FOMO_LEAD_EMAIL');
 
 $raw = file_get_contents('php://input');
 $in = json_decode($raw, true);
@@ -60,9 +62,9 @@ $lines = array(
   'Nachricht: ' . ($nachricht !== '' ? $nachricht : '-'),
 );
 $body = implode("\n", $lines);
-$headers = 'From: website@fomo-marketing.de' . "\r\n" . 'Reply-To: ' . $email . "\r\n" . 'Content-Type: text/plain; charset=utf-8';
+$headers = 'Reply-To: ' . $email . "\r\n" . 'Content-Type: text/plain; charset=utf-8';
 
-@mail($TO, $subject, $body, $headers);
+if ($TO) @mail($TO, $subject, $body, $headers);
 
 // TODO: optionale CRM-Anbindung hier ergänzen.
 

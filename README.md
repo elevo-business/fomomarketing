@@ -28,14 +28,14 @@ api/lead.php            Optionales Lead-Backend (nur auf PHP-Hosting; auf Pages 
 - Scarcity ohne Datum: 100 Plätze, Vergabe nur auf Anfrage, „die Liste erfährt alles zuerst"
 - Echte BML-Referenzen mit Original-Screenshots + Lightbox als Social Proof
 - Programm-Ablauf (nummeriert, ohne Uhrzeiten), „Für wen"-Qualifizierung, FAQ gegen Einwände
-- Platz-Anfrage-Formular mit Honeypot + automatischem E-Mail-Fallback
+- Platz-Anfrage-Formular mit Honeypot + automatischem WhatsApp-Fallback (keine E-Mail nötig)
 - WhatsApp-Direktanfrage (vorausgefüllt) + Sticky Mobile-CTA-Bar, Scroll-Progress
 - OG/Twitter-Cards mit eigenem 1200×630-Share-Image im Branding
 
 ## ⚠️ Vor dem echten Livegang ersetzen (Platzhalter)
-In `js/main.js` (`CONFIG`):
-- `email` → echte Event-E-Mail (aktuell `event@fomo-marketing.de`)
-- `whatsapp` ist bereits gesetzt (`4917675892012`)
+Leads laufen komplett über WhatsApp (`4917675892012`, gesetzt in `js/main.js` →
+`CONFIG`). Es gibt bewusst keine E-Mail-Adresse — falls später eine existiert,
+auf PHP-Hosting die Umgebungsvariable `FOMO_LEAD_EMAIL` setzen (`api/lead.php`).
 
 Außerdem:
 - **Radar-Logo:** `assets/img/logo-radar.svg` ist eine Vektor-Nachbildung des
