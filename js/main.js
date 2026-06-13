@@ -1,11 +1,11 @@
-/* FOMO LIVE 26 — interactions */
+/* FOMO Marketing — interactions */
 (function () {
   'use strict';
 
   // ---- CONFIG (bitte mit echten Daten ersetzen) ----
   var CONFIG = {
     whatsapp: '4917675892012',
-    waText: 'Hallo FOMO Marketing, ich möchte auf das Radar — gerne mehr Infos zu eurem Angebot und FOMO LIVE.',
+    waText: 'Hallo FOMO Marketing, ich interessiere mich für euer Angebot — gerne mehr Infos.',
     leadEndpoint: 'api/lead.php' // optional PHP-Backend; faellt sonst auf WhatsApp zurueck
   };
 
@@ -170,7 +170,7 @@
       data.consent = form.querySelector('[name="consent"]').checked;
       data.source = 'fomo-website';
 
-      if (!data.vorname || !data.nachname || !data.email || !data.telefon || !data.consent) {
+      if (!data.vorname || !data.nachname || !data.telefon || !data.consent) {
         show(false, 'Bitte fülle alle Pflichtfelder aus und bestätige den Datenschutz.');
         return;
       }
@@ -200,13 +200,12 @@
     });
 
     function fallbackWhatsApp(d) {
-      var text = 'Anfrage über die FOMO-Marketing-Website\n\n'
+      var text = 'Interessent über die FOMO-Marketing-Website\n\n'
         + 'Name: ' + d.vorname + ' ' + d.nachname + '\n'
-        + 'E-Mail: ' + d.email + '\n'
         + 'Telefon: ' + d.telefon + '\n'
+        + 'E-Mail: ' + (d.email || '-') + '\n'
         + 'Unternehmen: ' + (d.unternehmen || '-') + '\n'
         + 'Branche: ' + (d.branche || '-') + '\n'
-        + 'Interesse: ' + (d.interesse || '-') + '\n'
         + 'Nachricht: ' + (d.nachricht || '-');
       window.open('https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
     }
@@ -216,7 +215,7 @@
   function initLegal() {
     var content = {
       impressum: '<h2>Impressum</h2><p><strong>Angaben gemäß § 5 TMG</strong></p><p>FOMO Marketing<br>[Inhaber / Firmierung]<br>[Straße &amp; Hausnummer]<br>[PLZ Ort]</p><p><strong>Kontakt</strong><br>WhatsApp: +49 176 75892012</p><p style="opacity:.6;font-size:12px;margin-top:18px">Platzhalter — bitte mit den offiziellen Angaben ersetzen.</p>',
-      datenschutz: '<h2>Datenschutz</h2><p>Wir nehmen den Schutz deiner Daten ernst. Über dieses Formular übermittelte Angaben (Name, E-Mail, Telefon, Unternehmen, Nachricht) werden ausschließlich zur Bearbeitung deiner Platz-Anfrage für FOMO LIVE verwendet und nicht an unbefugte Dritte weitergegeben.</p><p>Du kannst der Verarbeitung jederzeit widersprechen und die Löschung deiner Daten verlangen — eine formlose Nachricht per WhatsApp an +49 176 75892012 genügt.</p><p style="opacity:.6;font-size:12px;margin-top:18px">Platzhalter — bitte vor dem Livegang durch eine vollständige Datenschutzerklärung ersetzen.</p>'
+      datenschutz: '<h2>Datenschutz</h2><p>Wir nehmen den Schutz deiner Daten ernst. Über dieses Formular übermittelte Angaben (Name, E-Mail, Telefon, Unternehmen, Nachricht) werden ausschließlich zur Bearbeitung deiner Anfrage verwendet und nicht an unbefugte Dritte weitergegeben.</p><p>Du kannst der Verarbeitung jederzeit widersprechen und die Löschung deiner Daten verlangen — eine formlose Nachricht per WhatsApp an +49 176 75892012 genügt.</p><p style="opacity:.6;font-size:12px;margin-top:18px">Platzhalter — bitte vor dem Livegang durch eine vollständige Datenschutzerklärung ersetzen.</p>'
     };
     var overlay = document.createElement('div');
     overlay.className = 'legal-overlay';

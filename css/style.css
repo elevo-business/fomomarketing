@@ -1,4 +1,4 @@
-/* FOMO LIVE — Event Landingpage (dunkles Espresso · Beige · Cognac, Cinzel), nach BML-Qualitätsstandard */
+/* FOMO Marketing — Landingpage (monochrom: dunkles Espresso · Beige, Cinzel), nach BML-Qualitätsstandard */
 @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 var(--accent-glow)}50%{box-shadow:0 0 36px 2px var(--accent-glow)}}
@@ -14,8 +14,8 @@
 --bg:#120D09;--bg-2:#16100B;--surface:#1C1510;--surface-2:#231B14;--surface-3:#2C231A;
 --line:rgba(240,235,225,.09);--line-2:rgba(240,235,225,.17);
 --text:#F0EBE1;--text-2:#D9D0C2;--muted:#9C8F7F;--dim:#6E6356;
---accent:#D9A05B;--accent-2:#E6B97E;--cream:#F0EBE1;
---accent-soft:rgba(217,160,91,.09);--accent-glow:rgba(217,160,91,.28);
+--accent:#F0EBE1;--accent-2:#FFFFFF;--cream:#F0EBE1;
+--accent-soft:rgba(240,235,225,.06);--accent-glow:rgba(240,235,225,.14);
 --font-h:'Cinzel',Georgia,serif;
 --font-num:'Cinzel',Georgia,serif;
 --font-body:'Inter','Helvetica Neue',Arial,sans-serif;
@@ -113,7 +113,7 @@ section{padding:var(--section-pad) 0;position:relative}
 .hr-cross::before,.hr-cross::after{content:'';position:absolute;background:rgba(240,235,225,.06)}
 .hr-cross::before{left:50%;top:0;bottom:0;width:1px}
 .hr-cross::after{top:50%;left:0;right:0;height:1px}
-.hr-sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(217,160,91,.3),rgba(217,160,91,.09) 12%,transparent 26%);animation:sweep 4.5s linear infinite}
+.hr-sweep{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(240,235,225,.2),rgba(240,235,225,.06) 12%,transparent 26%);animation:sweep 4.5s linear infinite}
 .hr-core{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px;border-radius:50%;background:var(--accent);box-shadow:0 0 22px var(--accent-glow)}
 .hr-core::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:1.5px solid var(--accent);animation:ringpulse 2.4s var(--ease) infinite}
 .hr-blip{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 14px var(--accent-glow);animation:blip 4.5s infinite}
@@ -177,18 +177,6 @@ section{padding:var(--section-pad) 0;position:relative}
 .cases-cta{margin-top:44px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .cases-cta p{font-size:14.5px;color:var(--muted)}
 .cases-cta p a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
-
-/* EVENT TEASER */
-.event-teaser{display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:center;background:linear-gradient(160deg,var(--surface-2),var(--surface));border:1px solid var(--line-2);border-radius:var(--radius-xl);padding:clamp(32px,5vw,64px);position:relative;overflow:hidden}
-.event-teaser::before{content:'';position:absolute;top:-50%;right:-15%;width:420px;height:420px;background:radial-gradient(circle,var(--accent-glow),transparent 70%);opacity:.3;filter:blur(50px);pointer-events:none}
-.et-main{position:relative}
-.et-main h2{margin-bottom:14px}
-.et-main p{font-size:15.5px;color:var(--muted);line-height:1.7;max-width:520px;margin-bottom:26px}
-.et-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.et-hint{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;color:var(--muted)}
-.et-hint .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-glow);animation:blink 2.4s infinite;flex-shrink:0}
-.et-visual{position:relative;display:flex;align-items:center;justify-content:center}
-.et-visual img{width:min(100%,240px);opacity:.5;animation:float 7s var(--ease) infinite}
 
 /* FIT GRID (Für wen) */
 .fit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1080px;margin:0 auto}
@@ -323,11 +311,6 @@ section{padding:var(--section-pad) 0;position:relative}
   .footer-bottom{flex-direction:column;text-align:center}
   .marquee-item{font-size:17px}
   .section-header{margin-bottom:42px}
-  .event-teaser{grid-template-columns:1fr;gap:8px;padding:30px 22px}
-  .et-visual{display:none}
-  .et-cta{flex-direction:column;align-items:stretch;gap:12px}
-  .et-cta .btn{width:100%}
-  .et-hint{justify-content:center}
   /* Referenzen: horizontales Swipe-Karussell statt langer Liste */
   .cases-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:0 calc(-1*var(--pad));padding:4px var(--pad) 10px;scrollbar-width:none}
   .cases-grid::-webkit-scrollbar{display:none}

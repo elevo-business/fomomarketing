@@ -41,12 +41,11 @@ $email    = f($in, 'email');
 $telefon  = f($in, 'telefon');
 $firma    = f($in, 'unternehmen');
 $branche  = f($in, 'branche');
-$interesse = f($in, 'interesse');
 $nachricht= f($in, 'nachricht');
 $consent  = !empty($in['consent']);
 
-if ($vorname === '' || $nachname === '' || $email === '' || $telefon === '') respond(false, 'Pflichtfelder fehlen');
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) respond(false, 'E-Mail ungültig');
+if ($vorname === '' || $nachname === '' || $telefon === '') respond(false, 'Pflichtfelder fehlen');
+if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) respond(false, 'E-Mail ungültig');
 if (!$consent) respond(false, 'Einwilligung fehlt');
 if (preg_match('~https?://|www\.~i', $vorname . ' ' . $nachname)) respond(true, 'ok'); // Spam
 
@@ -54,15 +53,14 @@ $subject = 'FOMO Marketing — Anfrage: ' . $vorname . ' ' . $nachname;
 $lines = array(
   'Neue Anfrage über die FOMO-Marketing-Website', '',
   'Name: ' . $vorname . ' ' . $nachname,
-  'E-Mail: ' . $email,
   'Telefon: ' . $telefon,
+  'E-Mail: ' . ($email !== '' ? $email : '-'),
   'Unternehmen: ' . ($firma !== '' ? $firma : '-'),
   'Branche: ' . ($branche !== '' ? $branche : '-'),
-  'Interesse: ' . ($interesse !== '' ? $interesse : '-'),
   'Nachricht: ' . ($nachricht !== '' ? $nachricht : '-'),
 );
 $body = implode("\n", $lines);
-$headers = 'Reply-To: ' . $email . "\r\n" . 'Content-Type: text/plain; charset=utf-8';
+$headers = ($email !== '' ? 'Reply-To: ' . $email . "\r\n" : '') . 'Content-Type: text/plain; charset=utf-8';
 
 if ($TO) @mail($TO, $subject, $body, $headers);
 

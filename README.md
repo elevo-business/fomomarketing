@@ -2,12 +2,13 @@
 
 Repräsentative, mobile-first Landingpage für **FOMO Marketing** — gedacht als
 QR-Code-Ziel am Ende der Präsentation. Aufgebaut nach dem Qualitätsstandard des
-BML-Repos, im FOMO-Branding (dunkles Espresso, Beige, Cognac-Akzent, Cinzel-Typo,
+BML-Repos, im FOMO-Branding (monochrom: dunkles Espresso, Beige, Cinzel-Typo,
 Radar-Sweep-Animation).
 
-Ziel der Seite: Marke repräsentieren und **Interesse einsammeln** (Leads über
-WhatsApp/Formular). FOMO LIVE ist bewusst nur ein Teaser — ohne Datum/Uhrzeit:
-Termin & Location erfahren nur die, die auf der Liste stehen.
+Ziel der Seite: Marke repräsentieren und **Interessenten einsammeln** (Formular
+oder WhatsApp). Glasklar und ohne Tricks — wer sich nach der Präsentation für
+FOMO Marketing interessiert, trägt sich ein und bekommt in 24 h eine Antwort.
+Design: monochrom (dunkles Espresso + Beige, Cinzel), bewusst ohne Akzentfarbe.
 
 ## Stack
 - Statisches HTML / CSS / Vanilla JS (kein Build-Step)
@@ -26,11 +27,11 @@ api/lead.php            Optionales Lead-Backend (nur auf PHP-Hosting; auf Pages 
 ```
 
 ## Conversion-Elemente
-- Interesse-Formular mit Qualifizierungs-Feld (Social Media / FOMO LIVE / beides),
+- Schlankes Interessenten-Formular (Telefon Pflicht, E-Mail optional),
   Honeypot + automatischem WhatsApp-Fallback (keine E-Mail nötig)
-- Echte BML-Referenzen mit Original-Screenshots + Lightbox als Social Proof —
+- Echte Referenzen mit Original-Screenshots + Lightbox als Social Proof —
   auf Mobile als Swipe-Karussell
-- FOMO-LIVE-Teaser ohne Datum („die Liste erfährt alles zuerst"), „Für wen"-Qualifizierung, FAQ
+- „Für wen"-Qualifizierung und FAQ gegen die typischen Einwände
 - WhatsApp-Direktanfrage (vorausgefüllt) + Sticky Mobile-CTA-Bar, Scroll-Progress
 - Mobile-first: kompakte Sektionen, 16px-Inputs (kein iOS-Zoom), Safe-Area-Insets,
   Reduced-Motion-Support, ruhige Animationen auf kleinen Screens
