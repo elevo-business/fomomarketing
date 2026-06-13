@@ -208,7 +208,8 @@ section{padding:var(--section-pad) 0;position:relative}
 .faq-toggle i{width:16px;height:16px;transition:transform .3s}
 .faq-item.open .faq-toggle{background:var(--accent);border-color:var(--accent);color:#120D09}
 .faq-item.open .faq-toggle i{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.faq-item.open .faq-a{max-height:600px}
 .faq-a-inner{padding:0 0 26px;font-size:15px;color:var(--muted);line-height:1.75;max-width:720px}
 
 /* TICKETS / KONTAKT */
