@@ -1,12 +1,13 @@
-# FOMO LIVE — Event-Landingpage
+# FOMO Marketing — Website
 
-Conversion-fokussierte Event-Landingpage für **FOMO LIVE** — das Live-Event von
-**FOMO Marketing × BrandsMarketingLab** für lokale Brands. Aufgebaut nach dem
-Qualitätsstandard des BML-Repos, im FOMO-Branding (dunkles Espresso, Beige,
-Cognac-Akzent, Cinzel-Typo, Radar-Sweep-Animation).
+Repräsentative, mobile-first Landingpage für **FOMO Marketing** — gedacht als
+QR-Code-Ziel am Ende der Präsentation. Aufgebaut nach dem Qualitätsstandard des
+BML-Repos, im FOMO-Branding (dunkles Espresso, Beige, Cognac-Akzent, Cinzel-Typo,
+Radar-Sweep-Animation).
 
-Bewusst **ohne Datum/Uhrzeit**: Termin & Location erfahren nur die, die auf der
-Liste stehen — die Seite hat ein einziges Ziel: Platz-Anfragen (Leads) einsammeln.
+Ziel der Seite: Marke repräsentieren und **Interesse einsammeln** (Leads über
+WhatsApp/Formular). FOMO LIVE ist bewusst nur ein Teaser — ohne Datum/Uhrzeit:
+Termin & Location erfahren nur die, die auf der Liste stehen.
 
 ## Stack
 - Statisches HTML / CSS / Vanilla JS (kein Build-Step)
@@ -15,7 +16,7 @@ Liste stehen — die Seite hat ein einziges Ziel: Platz-Anfragen (Leads) einsamm
 
 ## Struktur
 ```
-index.html              Komplette One-Page-Event-Seite (DE) inkl. OG/Twitter-Tags + JSON-LD
+index.html              Komplette One-Page-Seite (DE) inkl. OG/Twitter-Tags + JSON-LD
 css/style.css           Design-System + Komponenten + Responsive + Mobile-Conversion-Bar
 js/main.js              Interaktion: Reveal, Count-up, Lightbox, FAQ, Formular, Legal
 assets/img/             Radar-Logo (SVG, Beige), Favicons, OG-Image (1200×630)
@@ -25,11 +26,14 @@ api/lead.php            Optionales Lead-Backend (nur auf PHP-Hosting; auf Pages 
 ```
 
 ## Conversion-Elemente
-- Scarcity ohne Datum: 100 Plätze, Vergabe nur auf Anfrage, „die Liste erfährt alles zuerst"
-- Echte BML-Referenzen mit Original-Screenshots + Lightbox als Social Proof
-- Programm-Ablauf (nummeriert, ohne Uhrzeiten), „Für wen"-Qualifizierung, FAQ gegen Einwände
-- Platz-Anfrage-Formular mit Honeypot + automatischem WhatsApp-Fallback (keine E-Mail nötig)
+- Interesse-Formular mit Qualifizierungs-Feld (Social Media / FOMO LIVE / beides),
+  Honeypot + automatischem WhatsApp-Fallback (keine E-Mail nötig)
+- Echte BML-Referenzen mit Original-Screenshots + Lightbox als Social Proof —
+  auf Mobile als Swipe-Karussell
+- FOMO-LIVE-Teaser ohne Datum („die Liste erfährt alles zuerst"), „Für wen"-Qualifizierung, FAQ
 - WhatsApp-Direktanfrage (vorausgefüllt) + Sticky Mobile-CTA-Bar, Scroll-Progress
+- Mobile-first: kompakte Sektionen, 16px-Inputs (kein iOS-Zoom), Safe-Area-Insets,
+  Reduced-Motion-Support, ruhige Animationen auf kleinen Screens
 - OG/Twitter-Cards mit eigenem 1200×630-Share-Image im Branding
 
 ## ⚠️ Vor dem echten Livegang ersetzen (Platzhalter)

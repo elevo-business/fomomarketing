@@ -5,7 +5,7 @@
   // ---- CONFIG (bitte mit echten Daten ersetzen) ----
   var CONFIG = {
     whatsapp: '4917675892012',
-    waText: 'Hallo FOMO Marketing, ich möchte mir einen Platz bei FOMO LIVE sichern.',
+    waText: 'Hallo FOMO Marketing, ich möchte auf das Radar — gerne mehr Infos zu eurem Angebot und FOMO LIVE.',
     leadEndpoint: 'api/lead.php' // optional PHP-Backend; faellt sonst auf WhatsApp zurueck
   };
 
@@ -25,17 +25,17 @@
     var mq = document.getElementById('marqueeTrack');
     if (mq) mq.innerHTML += mq.innerHTML;
 
-    // sticky mobile CTA: show after hero, hide while ticket section is visible
+    // sticky mobile CTA: show after hero, hide while contact section is visible
     var mcta = document.getElementById('mobileCta');
     if (mcta) {
-      var ticketsVisible = false;
-      var tickets = document.getElementById('tickets');
-      if ('IntersectionObserver' in window && tickets) {
-        new IntersectionObserver(function (es) { ticketsVisible = es[0].isIntersecting; updMcta(); }, { threshold: .12 }).observe(tickets);
+      var contactVisible = false;
+      var contact = document.getElementById('kontakt');
+      if ('IntersectionObserver' in window && contact) {
+        new IntersectionObserver(function (es) { contactVisible = es[0].isIntersecting; updMcta(); }, { threshold: .12 }).observe(contact);
       }
       var updMcta = function () {
         var pastHero = window.scrollY > window.innerHeight * 0.55;
-        mcta.classList.toggle('show', pastHero && !ticketsVisible);
+        mcta.classList.toggle('show', pastHero && !contactVisible);
       };
       window.addEventListener('scroll', updMcta, { passive: true });
       window.addEventListener('resize', updMcta, { passive: true });
@@ -168,7 +168,7 @@
         if (f.name && f.type !== 'checkbox') data[f.name] = f.value.trim();
       });
       data.consent = form.querySelector('[name="consent"]').checked;
-      data.source = 'fomo-live';
+      data.source = 'fomo-website';
 
       if (!data.vorname || !data.nachname || !data.email || !data.telefon || !data.consent) {
         show(false, 'Bitte fülle alle Pflichtfelder aus und bestätige den Datenschutz.');
@@ -194,19 +194,19 @@
       function success() {
         if (btn) { btn.disabled = false; btn.innerHTML = orig; }
         form.reset();
-        show(true, 'Deine Platz-Anfrage ist raus! Wir melden uns innerhalb von 24 Stunden — Termin & Location erfährst du als Erstes. 📡');
+        show(true, 'Deine Anfrage ist raus! Wir melden uns innerhalb von 24 Stunden persönlich bei dir. 📡');
         if (window.lucide) lucide.createIcons();
       }
     });
 
     function fallbackWhatsApp(d) {
-      var text = 'Platz-Anfrage FOMO LIVE\n\n'
+      var text = 'Anfrage über die FOMO-Marketing-Website\n\n'
         + 'Name: ' + d.vorname + ' ' + d.nachname + '\n'
         + 'E-Mail: ' + d.email + '\n'
         + 'Telefon: ' + d.telefon + '\n'
         + 'Unternehmen: ' + (d.unternehmen || '-') + '\n'
         + 'Branche: ' + (d.branche || '-') + '\n'
-        + 'Plätze: ' + (d.plaetze || '1 Person') + '\n'
+        + 'Interesse: ' + (d.interesse || '-') + '\n'
         + 'Nachricht: ' + (d.nachricht || '-');
       window.open('https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
     }

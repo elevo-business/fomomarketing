@@ -1,6 +1,6 @@
 <?php
 /**
- * Optionales Lead-Backend für FOMO LIVE.
+ * Optionales Lead-Backend für die FOMO-Marketing-Website.
  *
  * Läuft NUR auf PHP-Hosting (z.B. All-Inkl/Netcup) — NICHT auf GitHub Pages.
  * Auf Pages schlägt der Aufruf fehl und das Formular fällt automatisch auf
@@ -41,7 +41,7 @@ $email    = f($in, 'email');
 $telefon  = f($in, 'telefon');
 $firma    = f($in, 'unternehmen');
 $branche  = f($in, 'branche');
-$plaetze  = f($in, 'plaetze');
+$interesse = f($in, 'interesse');
 $nachricht= f($in, 'nachricht');
 $consent  = !empty($in['consent']);
 
@@ -50,15 +50,15 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) respond(false, 'E-Mail ungültig
 if (!$consent) respond(false, 'Einwilligung fehlt');
 if (preg_match('~https?://|www\.~i', $vorname . ' ' . $nachname)) respond(true, 'ok'); // Spam
 
-$subject = 'FOMO LIVE — Platz-Anfrage: ' . $vorname . ' ' . $nachname;
+$subject = 'FOMO Marketing — Anfrage: ' . $vorname . ' ' . $nachname;
 $lines = array(
-  'Neue Platz-Anfrage für FOMO LIVE', '',
+  'Neue Anfrage über die FOMO-Marketing-Website', '',
   'Name: ' . $vorname . ' ' . $nachname,
   'E-Mail: ' . $email,
   'Telefon: ' . $telefon,
   'Unternehmen: ' . ($firma !== '' ? $firma : '-'),
   'Branche: ' . ($branche !== '' ? $branche : '-'),
-  'Plätze: ' . ($plaetze !== '' ? $plaetze : '1 Person'),
+  'Interesse: ' . ($interesse !== '' ? $interesse : '-'),
   'Nachricht: ' . ($nachricht !== '' ? $nachricht : '-'),
 );
 $body = implode("\n", $lines);
