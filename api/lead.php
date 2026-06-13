@@ -41,6 +41,7 @@ $email    = f($in, 'email');
 $telefon  = f($in, 'telefon');
 $firma    = f($in, 'unternehmen');
 $branche  = f($in, 'branche');
+$budget   = f($in, 'budget');
 $nachricht= f($in, 'nachricht');
 $consent  = !empty($in['consent']);
 
@@ -57,6 +58,7 @@ $lines = array(
   'E-Mail: ' . ($email !== '' ? $email : '-'),
   'Unternehmen: ' . ($firma !== '' ? $firma : '-'),
   'Branche: ' . ($branche !== '' ? $branche : '-'),
+  'Budget: ' . ($budget !== '' ? $budget : '-'),
   'Nachricht: ' . ($nachricht !== '' ? $nachricht : '-'),
 );
 $body = implode("\n", $lines);

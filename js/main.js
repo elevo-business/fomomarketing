@@ -204,6 +204,7 @@
         + 'E-Mail: ' + (d.email || '-') + '\n'
         + 'Unternehmen: ' + (d.unternehmen || '-') + '\n'
         + 'Branche: ' + (d.branche || '-') + '\n'
+        + 'Budget: ' + (d.budget || '-') + '\n'
         + 'Nachricht: ' + (d.nachricht || '-');
       window.open('https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
     }
