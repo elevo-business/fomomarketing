@@ -122,7 +122,10 @@
     // escape closes overlays
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
-        $all('.lightbox.active,.legal-overlay.active').forEach(function (o) { o.classList.remove('active'); });
+        $all('.lightbox.active,.legal-overlay.active,.fomo-modal.active').forEach(function (o) {
+          o.classList.remove('active');
+          if (o.classList.contains('fomo-modal')) o.setAttribute('aria-hidden', 'true');
+        });
         document.body.style.overflow = '';
       }
     });
@@ -140,10 +143,35 @@
     // legal overlays
     initLegal();
 
+    // explainer modal ("Was macht FOMO Marketing?")
+    initModal();
+
     // lead form
     initForm();
 
   });
+
+  // ---- EXPLAINER MODAL ----
+  function initModal() {
+    var modal = document.getElementById('fomoModal');
+    if (!modal) return;
+    function open() {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    $all('[data-fm-open]').forEach(function (b) {
+      b.addEventListener('click', function (e) { e.preventDefault(); open(); });
+    });
+    $all('[data-fm-close]', modal).forEach(function (b) {
+      b.addEventListener('click', function () { close(); });
+    });
+  }
 
   // ---- LEAD FORM ----
   function initForm() {
